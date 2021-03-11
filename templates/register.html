@@ -1,0 +1,152 @@
+{% extends 'base_section.html'%}
+{% load static %}
+{% block head%}
+<title>Register Page</title>
+
+{% endblock %}
+{% block content %}
+     <!-- CONTACT -->
+     <section class="contact section-padding">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-6 mx-auto col-md-7 col-12 py-5 mt-5 text-center" data-aos="fade-up">
+
+                      <h1 class="mb-4">Hey there, Let's <strong>talk</strong> about <strong>creative</strong> projects</h1>
+
+                      <p>or email us at <a href="mailto:hello@company.com">hello@company.com</a></p>
+                      <p>Please follow our <a rel="nofollow" href="https://templatemo.com/contact">contact page</a> to <strong>setup</strong> the contact form.</p>
+                    </div>
+
+                    <div class="col-lg-8 mx-auto col-md-10 col-12">
+
+                      <form action="" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+                        {%csrf_token%}
+                        <div class="row">
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">Ism</label>
+                            <input type="text" class="form-control" name="fname" placeholder="Ism" required>
+                          </div>
+
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">Familiya</label>
+                            <input type="text" class="form-control" name="lname" placeholder="Familiya"required>
+                          </div>
+                          <div class="col-lg-12 col-12">
+                            <label for="cars">Sharif</label>
+                            <input type="text" class="form-control" name="sname" placeholder="Sharif"required>
+                          </div>
+
+                          <div class="col-lg-12 col-12">
+                            <p id="result"></p>
+                          </div>
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">Foydalanuvchi Nomi</label>
+                            <input type="text" class="form-control" name="uname" placeholder="username" id='username' onkeyup="checkuser()" required>
+                          </div>
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">E-Pochta</label>
+                            <input type="email" class="form-control" name="email" placeholder="email" required>
+                          </div>
+                          <div class="col-lg-12 col-12">
+                            <p id="resultpwd"></p>
+                          </div>
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">Password</label>
+                            <input type="password" class="form-control" name="password1" placeholder="password" id='password1' onkeyup="checkuser()" required>
+                          </div>
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">Password(again)</label>
+                            <input type="password" class="form-control" name="password2" placeholder="password again" id='password2' onkeyup="checkuser()" required>
+                          </div>
+
+                          <div class="col-lg-6 col-12">
+                            <label for="cars">Telefon raqami</label>
+                            <input type="number" class="form-control" name="cnumber" placeholder="99 1234567"pattern="[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}" required>
+                          </div>
+                          <div class="col-lg-6 col-12">
+                            <label for="branches">Filial tanlang:</label>
+                            <select  class="select-form" name="branch" id="branches" required>
+                              {% for i in branch%}
+                              <option value="{{i.id}}">{{i.name}}</option>
+                              {% endfor%}
+                            </select>
+                          </div>
+
+                          <div class="col-lg-6 col-12">
+                            <label for="course">Kurs nomi:</label>
+                            <select  class="select-form" name="course" id="course" required>
+                              {% for i in data%}
+                                <option value="{{i.id}}">{{i.name}}</option>
+                              {% endfor%}
+                            </select>
+                          </div>
+
+                          <div class="col-lg-6 col-12">
+                            <label for="edates">O'quv kurs kunlari:</label>
+                            <select  class="select-form" name="edate" id="edates" required>
+                                <option value="Dushanba, Chorshanba, Juma">Dushanba, Chorshanba, Juma</option >
+                                <option value="Seshanba, Payshanba, Shanba">Seshanba, Payshanba, Shanba</option>
+                            </select>
+                          </div>
+
+                          <div class="col-lg-12 col-12">
+                            <label for="cdates">O'quv kurs vaqti:</label>
+                            <select  class="select-form" name="cdate" id="cdates" required>
+                                <option value="Ertalab">Ertalab</option >
+                                <option value="Tushlikdan keyin">Tushlikdan keyin</option>
+                            </select>
+                          </div>
+
+                          <div class="col-lg-7 mx-auto col-7">
+                            <button type="submit" class="form-control" id="submit-button" name="submitbtn">Saqlash</button>
+                          </div>
+                        </div>
+
+                      </form>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+     <script>
+        function checkuser() {
+            let un = document.getElementById('username').value;
+            let pwd1 = document.getElementById('password1').value;
+            let pwd2 = document.getElementById('password2').value;
+            $.ajax({
+              url:"{% url 'check_user'%}",
+              type:"get",
+              data: {usern:un},
+              success:function(data){
+                if (data == 'Exists'){
+                    $('#result').html('Bu foydalanuchi avval ro`yxatdan o`tgan').addClass('text-danger');
+                    $('#username').addClass('alert alert-danger');
+                    $('#submit-button').attr('disabled', 'disabled');
+                }else if (pwd1 !== pwd2){
+                    $('#resultpwd').html('Kiritilgan parol va tasdiqlochi parol bir xil emas').addClass('text-danger');
+                    $('#password1').addClass('alert alert-danger');
+                    $('#password2').addClass('alert alert-danger');
+                    $('#submitbtn').attr('disabled', 'disabled');
+                }else{
+                    $('#result').html('');
+                    $('#resultpwd').html('');
+                    $('#username').removeClass('alert alert-danger')
+                    $('#password1').removeClass('alert alert-danger');
+                    $('#password2').removeClass('alert alert-danger');
+                    $('#submit-button').removeAttr('disabled')
+                }
+              }
+            })
+        }
+
+
+  </script>
+  {% if status %}
+  <script>
+      alert('{{status}}');
+      window.location = '/'
+  </script>
+  {% endif %}
+
+{% endblock %}

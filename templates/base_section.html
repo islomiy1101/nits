@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+  <title>NITS - Namangan IT School</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="@Makhmud17">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  {% block title %}
+
+  {% endblock %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/aos.css'%}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="{% static 'css/templatemo-digital-trend.css'%}">
+  {% block head%}
+
+  {% endblock %}
+</head>
+
+<body>
+  <!-- MENU BAR -->
+  <nav class="navbar navbar-expand-lg sticky-top" id="nav" style="transition: 0.2s;">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index'%}">
+        <i class="logo"></i>
+        NITS
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="{% url 'index'%}" class="nav-link smoothScroll">Bosh sahifa</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'about'%}" class="nav-link smoothScroll">Biz haqimizda</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'course'%}" class="nav-link">Kurslar</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'contact'%}" class="nav-link">Aloqa</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'live-chat'%}" class="nav-link">Live Chat</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown open">
+            <a href="#" class="nav-link dropdown-toggle nav-custom" type="button" id="navTriggerId" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Salom,{{user.username}}</a>
+            <ul class="dropdown-menu" aria-labelledby="navTriggerId">
+              <li class="dropdown-item">
+                <a class="" href="#">Shaxsiy kabinet</a>
+              </li>
+              <li class="dropdown-item">
+                <a class="" href="{% url 'user_logout'%}">Chiqish</a>
+              </li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{% url 'sign-up'%}" class="nav-link contact" id="nav-btn">Ro'yxatdan o'tish</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-toggle="modal" data-target='#mymodal'>Kirish</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="col-md-12">
+    <div class="modal fade inspect" id="mymodal">
+      <div class="modal-dialog modal-sm" style="z-index: 99">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" data-dismiss='modal'>&times;</button>
+          </div>
+          <div class="modal-body">
+            <form action="{% url 'user_login' %}" method="post">
+              {%csrf_token %}
+              <div class="form-group">
+                <label for="">Foydalanuvchi Nomi</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-user-o"></i>
+                    </span>
+                  </div>
+                  <input type="text" name="username" class="form-control"
+                    placeholder='Foydalanuvchi nomini kiriting...'>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Parol</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-key"></i>
+                    </span>
+                  </div>
+                  <input type="password" name="password" class="form-control" placeholder="Parolni kiriting">
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" name="rememberme" id=""><label for="">&nbsp; Yodda
+                  saqla</label>
+                &nbsp;<a href="#">Parolni unutdingmi?</a>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Kirish" class="btn btn-success" style='width:100%;'>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-5 mx-lg-auto col-md-8 col-10">
+          <h1 class="" data-aos="fade-up" data-aos-delay="100">Welcome to<strong> Digital</strong> Life...
+          </h1>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="my-4">Aloqa</h4>
+
+          <p class="mb-1">
+            <i class="fa fa-phone mr-2 footer-icon"></i>
+            +998 69 226 2611
+          </p>
+
+          <p>
+            <a href="#">
+              <i class="fa fa-envelope mr-2 footer-icon"></i>
+              nits2021@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="my-4">Bizning manzil</h4>
+
+          <p class="mb-1">
+            <i class="fa fa-home mr-2 footer-icon"></i>
+            Namangan viloyati, Namangan shaxar, A.Temur ko'chasi, 101-uy
+          </p>
+        </div>
+
+        <div class="col-lg-4 mx-lg-auto text-center col-md-8 col-12" data-aos="fade-up" data-aos-delay="400">
+          <p class="copyright-text">Copyright &copy; 2021 Namangan IT School
+            <br>
+            <a rel="nofollow noopener" href="#">Designed by NITS</a>
+          </p>
+        </div>
+
+        <div class="col-lg-4 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
+
+          <ul class="footer-link">
+            <li><a href="#">Loyihalar</a></li>
+            <li><a href="#">Biz bilan ishlang</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+          <ul class="social-icon">
+            <li><a href="#" class="fa fa-instagram"></a></li>
+            <li><a href="#" class="fa fa-twitter"></a></li>
+            <li><a href="#" class="fa fa-dribbble"></a></li>
+            <li><a href="#" class="fa fa-behance"></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/aos.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'js/smoothscroll.js'%}"></script>
+  <script src="{% static 'js/custom.js'%}"></script>
+  <script>
+    // When the user scrolls down 50px from the top of the document, resize the header's font size
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("nav").style.padding = "0.2em";
+      } else {
+        document.getElementById("nav").style.padding = "1em";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

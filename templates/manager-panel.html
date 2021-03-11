@@ -1,0 +1,198 @@
+{% extends 'base_section.html'%}
+{% load static %}
+{% block head%}
+<title>Register Page</title>
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+{% endblock %}
+{% block content %}
+<!-- MAIN CSS -->
+
+
+<br>
+<br>
+<br>
+<section class="contact mb-5 pb-5">
+  
+  <div class="container">
+    <div class="row justify-content-center border">
+      <h1 class="text-center w-100 mt-3">Ro'yxatdan o'tkazish</h1>
+
+      <div class="col-lg-6 col-md-7 col-12 d-flex" data-aos="fade-up">
+        
+        <h1 class="m-auto d-block">{{st.user.username}}</h1>
+       
+      </div>
+
+
+      <div class="col-lg-8 mx-auto mt-5 col-md-10 col-12">
+
+        
+        <form action="#" method="post" class="contact-form" id="list-students-info1" data-aos="fade-up"
+          data-aos-delay="300" role="form">
+          <div class="row">
+            <form action="" method="POST">
+              {% csrf_token %}
+            <div class="col-lg-6 col-12">
+              <label for="">Ism</label>
+              <input type="text" class="form-control" name="fname" placeholder="Ism" >
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">Familiya</label>
+              <input type="text" class="form-control" name="lname" placeholder="Familiya" >
+            </div>
+            <div class="col-lg-6 col-12">
+              <label for="">Sharif</label>
+              <input type="text" class="form-control" name="sname" placeholder="Sharif">
+            </div>
+            <div class="col-lg-6 col-12">
+              <label for="">Passport Seriya</label>
+              <input type="text" class="form-control" name="passport" placeholder="AA1234567">
+            </div>
+            <div class="col-lg-6 col-12">
+              <label for="">Telefon raqami</label>
+              <input type="tel" class="form-control" name="phone" placeholder="+998">
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">Tug'ulgan sana</label>
+              <input type="date" class="form-control" name="bdate" placeholder="">
+            </div>
+
+            <div class="col-lg-6 col-12 form-check">
+
+              <label class="form-check-label mx-5 my">
+                Jinsi <br>
+                <input type="radio" class="form-check-input" name="gender" id="" value="erkak">
+                Erkak
+              </label>
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="gender" id="" value="ayol">
+                ayol
+              </label>
+
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for=""> Tuman </label>
+              <select class="form-control" name="branch" id="">
+                {% for i in data %}
+                <option value="{{i.id}}">{{i}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for=""> MFY </label>
+              <select class="form-control" name="mfy" id="">
+                {% for i in mfy%}
+                <option value="{{i.id}}">{{i.name}}</option>
+                {%endfor%}
+              </select>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">Kurs nomi:</label>
+              <select class="form-control" name="course" id="">
+                {% for i in course %}
+                <option value="{{i.id}}">{{i.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">O'qituvchi</label>
+              <select class="form-control" name="teacher" id="">
+                {% for i in teacher %}
+                <option value="{{i.id}}">{{i.fullname}}</option>
+                {%endfor%}
+              </select>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">gurux</label>
+              <input class="form-control" type="text" name="group">
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">Boshlangan sana</label>
+              <input class="form-control" type="date" name="sdate">
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">Ishlash / O'qish joyi</label>
+              <input class="form-control" type="text" name="subject">
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label class="w-100" for="">To'lov turi</label>
+              pullik
+              <input class="" type="radio" name="tolov" value="pullik">
+              bepul
+              <input class="" type="radio" name="tolov" value="bepul">
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <label for="">Ijtimoiy holati</label>
+              <select class="form-control" name="social_statement" id="">
+                <option value="Yaxshi">Yaxshi</option>
+                <option value="temir-daftar">Temir daftar</option>
+                <option value="ayollar-daftar">Ayollar daftari</option>
+                <option value="yoshlar-daftar">Yoshlar daftari</option>
+                <option value="chin-yetim">Chin yetim</option>
+                <option value="chala-yetim">Chala yetim</option>
+              </select>
+            </div>
+
+            
+            <div class="col-lg-12 col-7 mt-4">
+              <button type="submit" class="w-25 rounded-pill btn btn-primary mx-auto d-block" id="submit-button"
+                name="submit">Saqlash</button>
+            </div>
+          </form>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+
+</section>
+<script>
+  var course = document.querySelector('#course');
+  var student = document.querySelector('#student');
+  // var sel3 = document.querySelector('#sel3');
+  var optionsDistrict = district.querySelectorAll('option');
+  var optionsClinic = clinic.querySelectorAll('option');
+  // var options3 = sel3.querySelectorAll('option');
+
+  function giveSelectionClinic(selValue) {
+    clinic.innerHTML = '';
+    for (var i = 0; i < optionsClinic.length; i++) {
+      if (optionsClinic[i].dataset.option === selValue) {
+        clinic.appendChild(optionsClinic[i]);
+      }
+    }
+  }
+
+  function giveSelectionDistrict(selValue) {
+    district.innerHTML = '';
+    for (var i = 0; i < optionsDistrict.length; i++) {
+      if (optionsDistrict[i].dataset.option === selValue) {
+        district.appendChild(optionsDistrict[i]);
+      }
+    }
+  }
+  function showme(id) {
+    document.getElementById(id).hidden = false;
+  }
+  giveSelection(clinic.value);
+</script>
+
+{% endblock %}

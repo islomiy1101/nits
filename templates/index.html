@@ -1,0 +1,222 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block head%}
+<title>IT School</title>
+
+{% endblock %}
+{% block content %}
+     <!-- ABOUT -->
+     <section class="about section-padding pb-0" id="about">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-7 mx-auto col-md-10 col-12">
+                         <div class="about-info">
+
+                              <h2 class="mb-4" data-aos="fade-up">Create your <strong>Digital </strong>future with <strong>NITS </strong></h2>
+
+                              <p class="mb-0" data-aos="fade-up">What ever you are interested in we have something for everyone<a href="blog.html">blog</a> pages, <a href="project-detail.html">project</a> page, and <a href="contact.html">contact</a> page. 
+                              <br><br>You are <strong>allowed</strong> to use this template for commercial or non-commercial purpose. You are NOT allowed to redistribute the template ZIP file on template collection websites.</p>
+                         </div>
+
+                         <div class="about-image" data-aos="fade-up" data-aos-delay="200">
+
+                          <img src="{% static 'images/office.png'%}" class="img-fluid" alt="office">
+                        </div>
+                    </div>
+
+               </div>
+          </div>
+     </section >
+
+     <!-- kurslar -->
+     <section>
+     
+          <div class="container">
+               <div class="row" style="margin-top:100px;" >
+                    <div class="col-lg-6 col-md-6 col-12 ">
+                         <div class="contact-image python" sdata-aos="fade-right">
+                              <h1>Python</h1>
+                         <img src="{% static 'images/webh.png'%}" class="img-fluid " data-aos="fade-up" alt="website">
+                         </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-12" data-aos="fade-right" data-aos-delay="0">
+                    <h4 class="my-5 pt-3" >Client Testimonials</h4>
+
+                    <h2 class="mb-4" data-aos-delay="0">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+
+                    <p>
+                         <strong>Mary Zoe</strong>
+
+                         <span class="mx-1">/</span>
+
+                         <small>Digital Agency (CEO)</small>
+                    </p>
+                    </div>
+               </div>
+          </div>
+
+                <div class="container">
+                    <div class="row" id="rev" style="margin-top:100px;" >
+                         <div class="col-lg-6 col-md-6 col-12 ">
+                              <div class="contact-image python" sdata-aos="fade-right">
+                                   <h1>Python</h1>
+                              <img src="{% static 'images/webh.png'%}" class="img-fluid " data-aos="fade-up" alt="website">
+                              </div>
+                         </div>
+     
+                         <div class="col-lg-6 col-md-6 col-12" data-aos="fade-right" data-aos-delay="0">
+                         <h4 class="my-5 pt-3" >Client Testimonials</h4>
+     
+                         <h2 class="mb-4" data-aos-delay="0">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+     
+                         <p>
+                              <strong>Mary Zoe</strong>
+     
+                              <span class="mx-1">/</span>
+     
+                              <small>Digital Agency (CEO)</small>
+                         </p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+     
+     <!-- kurslar -->
+     
+     <!-- PROJECT -->
+     <section class="project section-padding" id="project" style="background-color: white;">
+          <div class="container-fluid">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">
+
+                        <h2 class="mb-5 text-center" data-aos="fade-up">
+                            Please take a look through our
+                            <strong>featured Digital Trends</strong>
+                        </h2>
+
+                         <div class="owl-carousel owl-theme" id="project-slide">
+                              <div class="item project-wrapper" data-aos="fade-up" data-aos-delay="100">
+                                   <img src="{% static 'images/project/project-image01.jpg'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Marketing</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Sweet Go Agency</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                              <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'images/project/project-image02.jpg'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Website</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Smart Ladies</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                              <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'images/project/project-image03.jpg'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Branding</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Shoes factory</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                              <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'images/project/project-image04.jpg'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Social Media</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Race Bicycle</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+
+                              <div class="item project-wrapper" data-aos="fade-up">
+                                   <img src="{% static 'images/project/project-image05.jpg'%}" class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>Video</small>
+
+                                        <h3>
+                                             <a href="project-detail.html">
+                                                  <span>Ultimate HealthCare</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TESTIMONIAL -->
+     <section class="testimonial section-padding">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-6 col-md-5 col-12">
+                        <div class="contact-image" data-aos="fade-up">
+
+                          <img src="{% static 'images/female-avatar.png'%}" class="img-fluid" alt="website">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-7 col-12">
+                      <h4 class="my-5 pt-3" data-aos="fade-up" data-aos-delay="100">Client Testimonials</h4>
+
+                      <div class="quote" data-aos="fade-up" data-aos-delay="300"></div>
+
+                      <h2 class="mb-4" data-aos="fade-up" data-aos-delay="100">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+
+                      <p data-aos="fade-up" data-aos-delay="400">
+                        <strong>Mary Zoe</strong>
+
+                        <span class="mx-1">/</span>
+
+                        <small>Digital Agency (CEO)</small>
+                      </p>
+                    </div>
+               </div>
+          </div>
+     </section>
+</section>
+{% if status %}
+<script>
+    alert('{{status}}');
+    window.location = '/'
+</script>
+{% endif %}
+     {% endblock %}
